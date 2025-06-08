@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}Tweet{% endblock title %}
+
+{% block content %}
+<h1 class='text-center my-4'>Hi! this is sasta Tweet app</h1>
+<h2>{% if form.instance.pk %}
+    Edit tweet
+    {% else %}
+    Create tweet
+    {% endif %}
+</h2>
+
+<form method="post" enctype='multipart/form-data' class='form'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class='btn btn-warning' type='submit'>Submit </button>
+</form>
+<a href="{% url "tweet_list" %}">Back</a>
+
+{% endblock content %}
